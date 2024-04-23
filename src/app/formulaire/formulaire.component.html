@@ -1,0 +1,36 @@
+
+<div class="container">
+  <form [formGroup]="formResidence" >
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Id: </span>
+      </div>
+      <input type="text" class="form-control" formControlName="id">
+      <div *ngIf="get_id()?.invalid && get_id()?.touched" class="alert alert-danger">
+        Id is invalid !!
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Name: </span>
+      </div>
+      <input type="text" class="form-control" formControlName="name">
+      <div *ngIf="get_name()?.invalid && get_name()?.touched" class="alert alert-danger">
+        Name is invalid !!
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Address: </span>
+      </div>
+      <input type="text" class="form-control" formControlName="address">
+      <div *ngIf="formResidence.get('address')?.errors?.['minlength'] && get_address()?.touched" class="alert alert-danger">
+        Address is invalid !!
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" (click)="submit()" [disabled]="formResidence.invalid">Submit</button>
+  </form>
+</div>
